@@ -2,13 +2,13 @@ package com.javacamp.hrms.business.abstracts;
 
 import com.javacamp.hrms.core.utilities.results.DataResult;
 import com.javacamp.hrms.core.utilities.results.Result;
-import com.javacamp.hrms.entities.concretes.Department;
+import com.javacamp.hrms.entities.concretes.Candidate;
 
 import java.util.List;
 
-public interface DepartmentService {
+public interface CandidateService {
 
-    DataResult<List<Department>> getAll();
+    DataResult<List<Candidate>> getAll();
 
-    Result add(Department department);
+    Result add(Candidate candidate);
 }

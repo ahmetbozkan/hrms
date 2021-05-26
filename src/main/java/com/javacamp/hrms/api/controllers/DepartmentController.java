@@ -1,27 +1,32 @@
 package com.javacamp.hrms.api.controllers;
 
 import com.javacamp.hrms.business.abstracts.DepartmentService;
+import com.javacamp.hrms.core.utilities.results.DataResult;
+import com.javacamp.hrms.core.utilities.results.Result;
 import com.javacamp.hrms.entities.concretes.Department;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/departments")
-public class DepartmentsController {
+public class DepartmentController {
 
     private final DepartmentService departmentService;
 
     @Autowired
-    public DepartmentsController(DepartmentService departmentService) {
+    public DepartmentController(DepartmentService departmentService) {
         this.departmentService = departmentService;
     }
 
     @GetMapping("/getall")
-    public List<Department> getAll() {
+    public DataResult<List<Department>> getAll() {
         return departmentService.getAll();
+    }
+
+    @PostMapping("/add")
+    public Result add(@RequestBody Department department) {
+        return departmentService.add(department);
     }
 }
